@@ -32,8 +32,8 @@ const app = express();
 app.use(express.json())
 app.use(cors());
 
-app.listen(3003, ()=> {
-    console.log('app is running on 3003')
+app.listen(process.env.PORT, ()=> {
+    console.log(`app is running on ${process.env.PORT}`)
 });
 app.get("/", (req, res)=> {
     res.send("this is working:!");
