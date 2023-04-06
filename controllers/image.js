@@ -1,7 +1,8 @@
-const handleClarifaiCall = (req, res) => {
+const handleClarifaiCall = (req, res, key, user) => {
+
     const setClarifaiRequestOptions = (imageUrl) => {
-        const PAT = config.CLARIFAI_API_KEY;
-        const USER_ID = config.CLARIFAI_API_USER;       
+        const PAT = key;
+        const USER_ID = user;       
         const APP_ID = 'facerecog1';
         const IMAGE_URL = imageUrl;
       
