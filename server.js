@@ -6,7 +6,18 @@ const signin = require('./controllers/signin');
 const image = require('./controllers/image');
 const user = require('./controllers/user');
 const { profileGet } = require('./controllers/profile');
-const { CLARAFAI_API_KEY, CLARAFAI_API_USER } = require('./config');
+
+let CLARIFAI_API_KEY, CLARIFAI_API_USER;
+
+try {
+  const config = require('./config');
+  CLARIFAI_API_KEY = config.CLARIFAI_API_KEY;
+  CLARIFAI_API_USER = config.CLARIFAI_API_USER;
+} catch (error) {
+  if (error.code !== 'MODULE_NOT_FOUND') throw error;
+  CLARIFAI_API_KEY = null;
+  CLARIFAI_API_USER = null;
+}
 
 let db = require('knex')({
     client: 'pg',
