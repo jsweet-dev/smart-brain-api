@@ -30,7 +30,7 @@ let db = require('knex')({
     },
     ssl: { rejectUnauthorized: false }
   });
-
+ 
 const app = express();
 app.use(express.json())
 app.use(cors());
@@ -46,4 +46,4 @@ app.get("/profile/:id", (req, res)=> { profileGet(req, res, db) })
 app.post("/signin", (req, res) => { signin.handleSignin(req, res, db, bcrypt) });
 app.post("/register", (req, res) => { register.handleRegister(req, res, db, bcrypt) })
 app.put("/imagecount", (req, res) => { image.handleImageCount(req, res, db); })
-app.post("/imagepost", (req, res) => { image.handleClarifaiCall(req, res, process.env.CLARAFAI_API_KEY || CLARAFAI_API_KEY, process.env.CLARAFAI_API_USER || CLARAFAI_API_USER); })
+app.post("/imagepost", (req, res) => { image.handleClarifaiCall(req, res, process.env.CLARIFAI_API_KEY || CLARIFAI_API_KEY, process.env.CLARIFAI_API_USER || CLARIFAI_API_USER); })
